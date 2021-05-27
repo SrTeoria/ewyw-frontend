@@ -1,25 +1,51 @@
-
-.text{
-  background-color: #ECA72C;
+.LandingPage .text {
+  background-color: #eca72c;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  border-radius: 20px;
-  width: 25%;
-  height: 25%;
   margin: 5%;
+  padding: 20px;
 }
 
-.welcome{
+.LandingPage .welcome {
+  align-items: center;
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
+  padding: 1em;
 }
 
-.tittle{
+.LandingPage .welcome img {
+  width: 30%;
+}
+
+.LandingPage .tittle {
   display: flex;
   justify-content: center;
 }
 
-.backgroundImage{
+.LandingPage .backgroundImage {
   /* background-image: url('../RestaurantsList/restaurantes1.png'); */
+}
+
+@media screen and (min-width: 1000px) {
+  .LandingPage .welcome img {
+    width: 50%;
+  }
+
+  .LandingPage .welcome {
+    flex-direction: row;
+  }
+
+  .LandingPage .text {
+    width: 50%;
+  }
+
+  .LandingPage .welcome:nth-child(even) .text {
+    order: 1;
+  }
+
+  .LandingPage .welcome:nth-child(even) img {
+    order: 2;
+  }
 }

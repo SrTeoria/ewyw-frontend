@@ -1,33 +1,37 @@
-.signInContainer{
+.SignIn .signInContainer {
   display: flex;
   justify-content: center;
   margin: 15%;
 }
 
-.signin{
-  background-color: #ECA72C;
+.SignIn .form {
+  background-color: #eca72c;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 20px;
-  border-radius: 20px;
   width: 348px;
-  height: 176px;
 }
 
+.SignIn .form input {
+  display: block;
+  margin-bottom: 1em;
+  width: 100%;
+}
 
 @media only screen and (max-width: 579px) {
-  .signin{
+  .SignIn .form {
     margin: 1%;
   }
 }
-.inputsProfile{
+.SignIn .inputsProfile {
   margin: 5%;
   display: flex;
   flex-direction: column;
 }
 
-.backgroundImage{
-  background-image: url('../RestaurantsList/restaurantes1.png');
+.SignIn .backgroundImage {
+  background-image: url("../RestaurantsList/restaurantes1.png");
   min-height: 100vh;
 }
