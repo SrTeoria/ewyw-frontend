@@ -3,7 +3,6 @@ import "./App.css";
 import { history } from "./utils/history";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
-import ClientProfile from "./pages/ClientProfile";
 import RestaurantProfile from "./pages/RestaurantProfile";
 import { LandingPage } from "./pages/LandingPage";
 import ListaRestaurantes from "./pages/ListaRestaurantes";
@@ -33,9 +32,6 @@ function App() {
         <Route exact path="/signin">
           <SignIn />
         </Route>
-        <PrivateRoute exact path="/clientprofile">
-          <ClientProfile />
-        </PrivateRoute>
         <PrivateRoute exact path="/restaurantprofile/:restaurantId">
           <RestaurantProfile />
         </PrivateRoute>

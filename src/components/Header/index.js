@@ -1,35 +1,35 @@
-import axios from "axios";
-import { useHistory } from "react-router";
-import { useDispatch, useSelector } from "react-redux";
-import logo from "./logo.png";
-import "./styles.css";
-import { useEffect, useState } from "react";
-import { Modal, Button, Form, Row, Col } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { getClient } from "../../store/clientReducer";
+import axios from "axios"
+import { useHistory } from "react-router"
+import { useDispatch, useSelector } from "react-redux"
+import logo from "./logo.png"
+import "./styles.css"
+import { useEffect, useState } from "react"
+import { Modal, Button, Form, Row, Col } from "react-bootstrap"
+import "bootstrap/dist/css/bootstrap.min.css"
+import { getClient } from "../../store/clientReducer"
 
 function Header() {
-  const token = localStorage.getItem("token");
-  const userKind = localStorage.getItem("userKind");
+  const token = localStorage.getItem("token")
+  const userKind = localStorage.getItem("userKind")
 
-  const [show, setShow] = useState(false);
-  const history = useHistory();
-  const dispatch = useDispatch();
+  const [show, setShow] = useState(false)
+  const history = useHistory()
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    userKind === "client" && dispatch(getClient());
-  }, [dispatch, userKind]);
+    userKind === "client" && dispatch(getClient())
+  }, [dispatch, userKind])
 
   const { client } = useSelector(({ clientReducer }) => ({
     client: clientReducer.client,
   }));
 
-  const [name, setName] = useState(client.name);
-  const [direction, setDirection] = useState(client.direction);
-  const [phone, setPhone] = useState(client.phone);
+  const [name, setName] = useState(client.name)
+  const [direction, setDirection] = useState(client.direction)
+  const [phone, setPhone] = useState(client.phone)
 
   async function handleSubmit(e) {
-    e.preventDefault();
+    e.preventDefault()
     try {
       await axios({
         method: "PUT",
@@ -44,24 +44,24 @@ function Header() {
           Authorization: `Bearer ${token}`,
         },
       });
-      setShow(false);
-      dispatch(getClient());
+      setShow(false)
+      dispatch(getClient())
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
   }
 
   function handleClick() {
-    dispatch({ type: "USER_LOGOUT" });
-    localStorage.clear();
-    history.push("/signin");
+    dispatch({ type: "USER_LOGOUT" })
+    localStorage.clear()
+    history.push("/signin")
   }
 
   function handleClose() {
-    setShow(false);
-    setName(client.name);
-    setDirection(client.direction);
-    setPhone(client.phone);
+    setShow(false)
+    setName(client.name)
+    setDirection(client.direction)
+    setPhone(client.phone)
   }
 
   return (
@@ -94,10 +94,10 @@ function Header() {
               <button
                 className="headerButtons"
                 onClick={(e) => {
-                  setShow(true);
-                  setName(client.name);
-                  setDirection(client.direction);
-                  setPhone(client.phone);
+                  setShow(true)
+                  setName(client.name)
+                  setDirection(client.direction)
+                  setPhone(client.phone)
                 }}
               >
                 Mi perfil
@@ -143,7 +143,7 @@ function Header() {
               />
             </Col>
           </Form.Group>
-          <Form.Group className="mb-3" as={Row} controlId="formPlaintextName">
+          <Form.Group className="mb-3" as={Row} controlId="formPlaintextDirection">
             <Form.Label column sm="3">
               Dirección
             </Form.Label>
@@ -156,7 +156,7 @@ function Header() {
               />
             </Col>
           </Form.Group>
-          <Form.Group className="mb-3" as={Row} controlId="formPlaintextName">
+          <Form.Group className="mb-3" as={Row} controlId="formPlaintextPhone">
             <Form.Label column sm="3">
               Telefono
             </Form.Label>

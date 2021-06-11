@@ -5,9 +5,6 @@ import FormInputs from "../formInputs";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  changeDirection,
-  changeName,
-  changePhone,
   changeError,
   changeFoodCategory,
   getRestaurant,
@@ -19,22 +16,22 @@ import { useParams } from "react-router";
 import "./styles.css";
 
 export default function RestaurantForm() {
-  const [edit, setEdit] = useState(false);
-  const [createFood, setCreateFood] = useState(false);
-  const dispatch = useDispatch();
 
-  const userKind = localStorage.getItem("userKind");
-  const { restaurantId } = useParams();
+  const dispatch = useDispatch()
+  const { restaurantId } = useParams()
+
+  const userKind = localStorage.getItem("userKind")
+
+  const [name, setName] = useState()
+  const [direction, setDirection] = useState()
+  const [phone, setPhone] = useState()
 
   useEffect(() => {
-    userKind === "client" && dispatch(getFoods(restaurantId));
-    userKind === "restaurant" && dispatch(getRestaurant());
-  }, [dispatch, restaurantId, userKind]);
+    userKind === "client" && dispatch(getFoods(restaurantId))
+    userKind === "restaurant" && dispatch(getRestaurant())
+  }, [dispatch, restaurantId, userKind])
 
   const {
-    name,
-    direction,
-    phone,
     foodLabel,
     foodName,
     foodCategory,
@@ -42,9 +39,7 @@ export default function RestaurantForm() {
     foods,
     restaurant,
   } = useSelector(({ restaurantReducer, foodReducer }) => ({
-    name: restaurantReducer.name,
-    direction: restaurantReducer.direction,
-    phone: restaurantReducer.phone,
+
     foodName: restaurantReducer.foodName,
     foodLabel: restaurantReducer.foodLabel,
     foodCategory: restaurantReducer.foodCategory,
@@ -52,6 +47,10 @@ export default function RestaurantForm() {
     foods: foodReducer.foods,
     restaurant: restaurantReducer.restaurant,
   }));
+
+  const [edit, setEdit] = useState(false)
+  const [createFood, setCreateFood] = useState(false)
+
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -74,14 +73,14 @@ export default function RestaurantForm() {
         },
       });
     } catch (error) {
-      dispatch(changeError(error.message));
+      dispatch(changeError(error.message))
     }
   }
 
   async function saveChanges(e) {
     e.preventDefault();
     try {
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem("token")
       await axios({
         method: "PUT",
         baseURL: process.env.REACT_APP_SERVER_URL,
@@ -95,10 +94,10 @@ export default function RestaurantForm() {
           Authorization: `Bearer ${token}`,
         },
       });
-      setEdit(false);
-      dispatch(getRestaurant());
+      setEdit(false)
+      dispatch(getRestaurant())
     } catch (error) {
-      dispatch(changeError(error.message));
+      dispatch(changeError(error.message))
     }
   }
 
@@ -114,7 +113,7 @@ export default function RestaurantForm() {
                   id="name"
                   type="text"
                   name="name"
-                  onChange={(e) => dispatch(changeName(e.target.value))}
+                  onChange={(e) => setName(e.target.value)}
                   value={name}
                 >
                   Nombre
@@ -123,7 +122,7 @@ export default function RestaurantForm() {
                   id="direction"
                   type="text"
                   name="direction"
-                  onChange={(e) => dispatch(changeDirection(e.target.value))}
+                  onChange={(e) => setDirection(e.target.value)}
                   value={direction}
                 >
                   Dirección
@@ -132,7 +131,7 @@ export default function RestaurantForm() {
                   id="phone"
                   type="number"
                   name="phone"
-                  onChange={(e) => dispatch(changePhone(e.target.value))}
+                  onChange={(e) => setPhone(e.target.value)}
                   value={phone}
                 >
                   Celular
@@ -141,22 +140,27 @@ export default function RestaurantForm() {
             ) : (
               <>
                 <label>
-                  <span className="dateProfile">Nombre:</span> {name}
+                  <span className="dateProfile">Nombre:</span> {restaurant && restaurant.name}
                 </label>
                 <label>
-                  <span className="dateProfile">Direccion:</span> {direction}
+                  <span className="dateProfile">Direccion:</span> {restaurant && restaurant.direction}
                 </label>
                 <label>
-                  <span className="dateProfile">Telefono:</span> {phone}
+                  <span className="dateProfile">Telefono:</span> {restaurant && restaurant.phone}
                 </label>
               </>
             )}
           </div>
-          {edit === false && userKind === "restaurant" && (
+          {edit === false && restaurant &&  userKind === "restaurant" && (
             <Button
               className="buttonRestaurantProfile"
               type="button"
-              handleClick={() => setEdit(true)}
+              handleClick={() => {
+                setName(restaurant.name)
+                setDirection(restaurant.direction)
+                setPhone(restaurant.phone)
+                setEdit(true)
+              }}
             >
               Editar perfil
             </Button>
@@ -169,13 +173,10 @@ export default function RestaurantForm() {
               <Button
                 type="button"
                 handleClick={() => {
-                  setEdit(false);
-                  dispatch({ type: "CHANGE_NAME", payload: restaurant.name });
-                  dispatch({
-                    type: "CHANGE_DIRECTION",
-                    payload: restaurant.direction,
-                  });
-                  dispatch({ type: "CHANGE_PHONE", payload: restaurant.phone });
+                  setEdit(false)
+                  setName(restaurant.name)
+                  setDirection(restaurant.direction)
+                  setPhone(restaurant.phone)
                 }}
               >
                 Cancelar
@@ -231,11 +232,6 @@ export default function RestaurantForm() {
             <div>
               <CreateOrder foods={foods} />
             </div>
-            <p className="tittleProfile">
-              <b>Confirmar pedido</b>
-            </p>
-            <Button type="button">Cancelar pedido</Button>
-            <Button type="button">Pagar pedido</Button>
           </div>
         </div>
       )}

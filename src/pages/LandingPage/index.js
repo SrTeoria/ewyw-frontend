@@ -3,14 +3,12 @@ import "./styles.css";
 import welcomeFoto from "./pensativos1.jpg";
 import foodFoto from "./alimentos1.jpg";
 import classificationFoto from "./tipos.png";
-import RestaurantForm from "../../components/RestaurantForm";
 
 export function LandingPage() {
   return (
     <div className="LandingPage">
       <Header />
-      <RestaurantForm />
-      {/* <div className="backgroundImage">
+      <div className="backgroundImage">
         <div className="welcome">
           <img src={welcomeFoto} alt="foto bienvenida" />
           <div className="text">
@@ -47,7 +45,7 @@ export function LandingPage() {
             </p>
           </div>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 }

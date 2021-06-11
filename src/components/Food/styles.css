@@ -1,7 +1,21 @@
-.todo{
+.foodRender{
   border: 2px solid #0a0a09;
+  border-radius: 5px;
+  margin: 5px;
 }
 
 .price{
   border: 2px solid #0a0a09;
+  border-radius: 5px;
+  margin: 3px;
+}
+
+.cantidad{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fontWeigth{
+  font-weight: bold;
 }

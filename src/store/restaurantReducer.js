@@ -1,20 +1,21 @@
 import axios from "axios";
 import { history } from "../utils/history";
 
-const CHANGE_NAME = "CHANGE_NAME";
-const CHANGE_DIRECTION = "CHANGE_DIRECTION";
-const CHANGE_PHONE = "CHANGE_PHONE";
 const CHANGE_FOODCATEGORY = "CHANGE_FOODCATEGORY";
 const CHANGE_FOODNAME = "CHANGE_FOODNAME";
 const CHANGE_FOODLABEL = "CHANGE_FOODLABEL";
 const CHANGE_FOODPRICE = "CHANGE_FOODPRICE";
+
 const CHANGE_ERROR = "CHANGE_ERROR";
+
 const RESTAURANTS_LOADING = "RESTAURANTS_LOADING";
 const RESTAURANTS_SUCCESS = "RESTAURANTS_SUCCESS";
-const RESTAURANT_SUCCESS = "RESTAURANT_SUCCESS";
-export const RESTAURANTS_ERROR = "RESTAURANTS_ERROR";
 const RESTAURANTS_FINISHED = "RESTAURANTS_FINISHED";
+export const RESTAURANTS_ERROR = "RESTAURANTS_ERROR";
+
+const RESTAURANT_SUCCESS = "RESTAURANT_SUCCESS";
 export const SAVE_RESTAURANT = "SAVE_RESTAURANT";
+
 
 export function getRestaurant() {
   return async function (dispatch) {
@@ -32,9 +33,6 @@ export function getRestaurant() {
         },
       });
       dispatch({ type: RESTAURANT_SUCCESS, payload: data });
-      dispatch({ type: CHANGE_NAME, payload: data.name });
-      dispatch({ type: CHANGE_DIRECTION, payload: data.direction });
-      dispatch({ type: CHANGE_PHONE, payload: data.phone });
     } catch (error) {
       dispatch({ type: RESTAURANTS_ERROR, payload: error });
       if (
@@ -67,9 +65,6 @@ export function getRestaurantPublic(restaurantId) {
         },
       });
       dispatch({ type: RESTAURANT_SUCCESS, payload: data.restaurant });
-      dispatch({ type: CHANGE_NAME, payload: data.restaurant.name });
-      dispatch({ type: CHANGE_DIRECTION, payload: data.restaurant.direction });
-      dispatch({ type: CHANGE_PHONE, payload: data.restaurant.phone });
     } catch (error) {
       dispatch({ type: RESTAURANTS_ERROR, payload: error });
       if (
@@ -118,27 +113,6 @@ export function getRestaurants() {
   };
 }
 
-export function changeName(value) {
-  return {
-    type: CHANGE_NAME,
-    payload: value,
-  };
-}
-
-export function changeDirection(value) {
-  return {
-    type: CHANGE_DIRECTION,
-    payload: value,
-  };
-}
-
-export function changePhone(value) {
-  return {
-    type: CHANGE_PHONE,
-    payload: value,
-  };
-}
-
 export function changeFoodCategory(value) {
   return {
     type: CHANGE_FOODCATEGORY,
@@ -175,9 +149,6 @@ export function changeError(value) {
 }
 
 const initialState = {
-  name: "",
-  direction: "",
-  phone: "",
   foodCategory: "",
   foodName: "",
   foodLabel: "",
@@ -190,21 +161,6 @@ const initialState = {
 
 export function restaurantReducer(state = initialState, action) {
   switch (action.type) {
-    case CHANGE_NAME:
-      return {
-        ...state,
-        name: action.payload,
-      };
-    case CHANGE_DIRECTION:
-      return {
-        ...state,
-        direction: action.payload,
-      };
-    case CHANGE_PHONE:
-      return {
-        ...state,
-        phone: action.payload,
-      };
     case CHANGE_FOODCATEGORY:
       return {
         ...state,
