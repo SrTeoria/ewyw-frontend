@@ -17,9 +17,9 @@ export default function RestaurantsList() {
       restaurants: restaurantReducer.restaurants,
       error: restaurantReducer.error,
     })
-  );
+  )
 
-  if (loading) return <p>Cargando entrenadores disponibles...</p>;
+  if (loading) return <p>Cargando restaurantes disponibles...</p>;
   if (error) return <p>Algo salió mal</p>;
 
   return (

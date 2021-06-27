@@ -1,19 +1,19 @@
-import axios from "axios";
-import Button from "../Button";
-import Select from "../SelectInputs";
-import FormInputs from "../formInputs";
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import axios from "axios"
+import Button from "../Button"
+import Select from "../SelectInputs"
+import FormInputs from "../formInputs"
+import React, { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import {
   changeError,
   changeFoodCategory,
   getRestaurant,
-} from "../../store/restaurantReducer";
-import { getFoods } from "../../store/foodReducer";
-import CreateFood from "../CreateFood";
-import CreateOrder from "../CreateOrder";
-import { useParams } from "react-router";
-import "./styles.css";
+} from "../../store/restaurantReducer"
+import { getFoods } from "../../store/foodReducer"
+import CreateFood from "../CreateFood"
+import CreateOrder from "../CreateOrder"
+import { useParams } from "react-router"
+import "./styles.css"
 
 export default function RestaurantForm() {
 
