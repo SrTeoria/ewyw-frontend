@@ -19,8 +19,8 @@ export default function RestaurantsList() {
     })
   )
 
-  if (loading) return <p>Cargando restaurantes disponibles...</p>;
-  if (error) return <p>Algo salió mal</p>;
+  if (loading) return <p>Cargando restaurantes disponibles...</p>
+  if (error) return <p>Algo salió mal</p>
 
   return (
     <div className="restaurantList">
@@ -29,7 +29,7 @@ export default function RestaurantsList() {
         restaurants.length > 0 &&
         restaurants.map(({ name, direction, phone, _id }) => {
           return (
-            <div className="restaurantsCard">
+            <div key={_id} className="restaurantsCard">
               <span>
                 <strong>Nombre:</strong> {name}
               </span>
