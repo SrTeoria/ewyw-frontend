@@ -19,7 +19,6 @@ export default function RestaurantForm() {
 
   const dispatch = useDispatch()
   const { restaurantId } = useParams()
-
   const userKind = localStorage.getItem("userKind")
 
   const [name, setName] = useState()
@@ -152,18 +151,28 @@ export default function RestaurantForm() {
             )}
           </div>
           {edit === false && restaurant &&  userKind === "restaurant" && (
-            <Button
-              className="buttonRestaurantProfile"
-              type="button"
-              handleClick={() => {
-                setName(restaurant.name)
-                setDirection(restaurant.direction)
-                setPhone(restaurant.phone)
-                setEdit(true)
-              }}
-            >
-              Editar perfil
-            </Button>
+            <>
+              <Button
+                className="buttonRestaurantProfile"
+                type="button"
+                handleClick={() => {
+                  setName(restaurant.name)
+                  setDirection(restaurant.direction)
+                  setPhone(restaurant.phone)
+                  setEdit(true)
+                }}
+              >
+                Editar perfil
+              </Button>
+              <a href={`/foodslist/${restaurant._id}`}>
+                <Button
+                  className="buttonRestaurantProfile"
+                  type="button"
+                >
+                  Editar mis comidas
+                </Button>
+              </a>
+            </>
           )}
           {edit === true && restaurant && (
             <>
