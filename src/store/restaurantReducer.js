@@ -1,28 +1,28 @@
-import axios from "axios";
-import { history } from "../utils/history";
+import axios from "axios"
+import { history } from "../utils/history"
 
-const CHANGE_FOODCATEGORY = "CHANGE_FOODCATEGORY";
-const CHANGE_FOODNAME = "CHANGE_FOODNAME";
-const CHANGE_FOODLABEL = "CHANGE_FOODLABEL";
-const CHANGE_FOODPRICE = "CHANGE_FOODPRICE";
+const CHANGE_FOODCATEGORY = "CHANGE_FOODCATEGORY"
+export const CHANGE_FOODNAME = "CHANGE_FOODNAME"
+export const CHANGE_FOODLABEL = "CHANGE_FOODLABEL"
+export const CHANGE_FOODPRICE = "CHANGE_FOODPRICE"
 
-const CHANGE_ERROR = "CHANGE_ERROR";
+const CHANGE_ERROR = "CHANGE_ERROR"
 
-const RESTAURANTS_LOADING = "RESTAURANTS_LOADING";
-const RESTAURANTS_SUCCESS = "RESTAURANTS_SUCCESS";
-const RESTAURANTS_FINISHED = "RESTAURANTS_FINISHED";
-export const RESTAURANTS_ERROR = "RESTAURANTS_ERROR";
+const RESTAURANTS_LOADING = "RESTAURANTS_LOADING"
+const RESTAURANTS_SUCCESS = "RESTAURANTS_SUCCESS"
+const RESTAURANTS_FINISHED = "RESTAURANTS_FINISHED"
+export const RESTAURANTS_ERROR = "RESTAURANTS_ERROR"
 
-const RESTAURANT_SUCCESS = "RESTAURANT_SUCCESS";
-export const SAVE_RESTAURANT = "SAVE_RESTAURANT";
+const RESTAURANT_SUCCESS = "RESTAURANT_SUCCESS"
+export const SAVE_RESTAURANT = "SAVE_RESTAURANT"
 
 
 export function getRestaurant() {
   return async function (dispatch) {
-    dispatch({ type: RESTAURANTS_LOADING });
-    dispatch({ type: RESTAURANTS_ERROR });
+    dispatch({ type: RESTAURANTS_LOADING })
+    dispatch({ type: RESTAURANTS_ERROR })
     try {
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem("token")
 
       const { data } = await axios({
         method: "GET",
@@ -32,29 +32,29 @@ export function getRestaurant() {
           Authorization: `Bearer ${token}`,
         },
       });
-      dispatch({ type: RESTAURANT_SUCCESS, payload: data });
+      dispatch({ type: RESTAURANT_SUCCESS, payload: data })
     } catch (error) {
-      dispatch({ type: RESTAURANTS_ERROR, payload: error });
+      dispatch({ type: RESTAURANTS_ERROR, payload: error })
       if (
         error.response !== undefined &&
         error.response.request.status === 401
       ) {
         localStorage.removeItem("token");
-        alert("Su sesión expiró, ingrese nuevamente.");
-        history.push("/landingpage");
+        alert("Su sesión expiró, ingrese nuevamente.")
+        history.push("/landingpage")
       }
     } finally {
-      dispatch({ type: RESTAURANTS_FINISHED });
+      dispatch({ type: RESTAURANTS_FINISHED })
     }
   };
 }
 
 export function getRestaurantPublic(restaurantId) {
   return async function (dispatch) {
-    dispatch({ type: RESTAURANTS_LOADING });
-    dispatch({ type: RESTAURANTS_ERROR });
+    dispatch({ type: RESTAURANTS_LOADING })
+    dispatch({ type: RESTAURANTS_ERROR })
     try {
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem("token")
 
       const { data } = await axios({
         method: "GET",
@@ -64,29 +64,29 @@ export function getRestaurantPublic(restaurantId) {
           Authorization: `Bearer ${token}`,
         },
       });
-      dispatch({ type: RESTAURANT_SUCCESS, payload: data.restaurant });
+      dispatch({ type: RESTAURANT_SUCCESS, payload: data.restaurant })
     } catch (error) {
-      dispatch({ type: RESTAURANTS_ERROR, payload: error });
+      dispatch({ type: RESTAURANTS_ERROR, payload: error })
       if (
         error.response !== undefined &&
         error.response.request.status === 401
       ) {
-        localStorage.removeItem("token");
-        alert("Su sesión expiró, ingrese nuevamente.");
-        history.push("/landingpage");
+        localStorage.removeItem("token")
+        alert("Su sesión expiró, ingrese nuevamente.")
+        history.push("/landingpage")
       }
     } finally {
-      dispatch({ type: RESTAURANTS_FINISHED });
+      dispatch({ type: RESTAURANTS_FINISHED })
     }
   };
 }
 
 export function getRestaurants() {
   return async function (dispatch) {
-    dispatch({ type: RESTAURANTS_LOADING });
-    dispatch({ type: RESTAURANTS_ERROR, payload: "" });
+    dispatch({ type: RESTAURANTS_LOADING })
+    dispatch({ type: RESTAURANTS_ERROR, payload: "" })
     try {
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem("token")
 
       const { data } = await axios({
         method: "GET",
@@ -96,19 +96,19 @@ export function getRestaurants() {
           Authorization: `Bearer ${token}`,
         },
       });
-      dispatch({ type: RESTAURANTS_SUCCESS, payload: data });
+      dispatch({ type: RESTAURANTS_SUCCESS, payload: data })
     } catch (error) {
-      dispatch({ type: RESTAURANTS_ERROR, payload: error });
+      dispatch({ type: RESTAURANTS_ERROR, payload: error })
       if (
         error.response !== undefined &&
         error.response.request.status === 401
       ) {
-        localStorage.removeItem("token");
-        alert("Su sesión expiró, ingrese nuevamente.");
-        history.push("/signin");
+        localStorage.removeItem("token")
+        alert("Su sesión expiró, ingrese nuevamente.")
+        history.push("/signin")
       }
     } finally {
-      dispatch({ type: RESTAURANTS_FINISHED });
+      dispatch({ type: RESTAURANTS_FINISHED })
     }
   };
 }

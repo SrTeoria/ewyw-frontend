@@ -24,7 +24,7 @@ function App() {
   return (
     <Router history={history}>
       <Switch>
-        <Route exact path="/landingpage">
+        <Route exact path="/">
           <LandingPage />
         </Route>
         <Route exact path="/signup">
@@ -42,7 +42,7 @@ function App() {
         <PrivateRoute exact path="/restaurantprofile">
           <RestaurantProfile />
         </PrivateRoute>
-        <PrivateRoute exact path="/foodslist">
+        <PrivateRoute exact path="/foodslist/:restaurantId">
           <ListaComidas/>
         </PrivateRoute>
       </Switch>
