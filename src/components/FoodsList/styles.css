@@ -1,0 +1,25 @@
+.foodsCard {
+  align-items: flex-start;
+  background-color: #eca72c;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  margin: 2%;
+  padding: 1em;
+  width: 300px;
+}
+
+.foodList {
+  align-items: center;
+  background-image: url("./restaurantes1.png");
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.tittleList {
+  color: aliceblue;
+  text-align: center;
+  width: 100%;
+}
