@@ -144,45 +144,32 @@ export default function RestaurantForm() {
                   Celular
                 </FormInputs>
               </>
-            ) :
-            // (
-            //   <>
-            //     <label>
-            //       <span className="dateProfile">Nombre:</span> {restaurant && restaurant.name}
-            //     </label>
-            //     <label>
-            //       <span className="dateProfile">Direccion:</span> {restaurant && restaurant.direction}
-            //     </label>
-            //     <label>
-            //       <span className="dateProfile">Celular:</span> {restaurant && restaurant.phone}
-            //     </label>
-            //   </>
-            // )
-            restaurant === null ? (
-              <>
-                <label>
-                  <span className="dateProfile">Nombre:</span> {restaurantName && restaurantName}
-                </label>
-                <label>
-                  <span className="dateProfile">Direccion:</span> {restaurantDirection && restaurantDirection}
-                </label>
-                <label>
-                  <span className="dateProfile">Celular:</span> {restaurantPhone && restaurantPhone}
-                </label>
-              </>
-            ) : (
-              <>
-                <label>
-                  <span className="dateProfile">Nombre:</span> {restaurant && restaurant.name}
-                </label>
-                <label>
-                  <span className="dateProfile">Direccion:</span> {restaurant && restaurant.direction}
-                </label>
-                <label>
-                  <span className="dateProfile">Celular:</span> {restaurant && restaurant.phone}
-                </label>
-              </>
-            )
+              ) :
+              restaurant === null ? (
+                <>
+                  <label>
+                    <span className="dateProfile">Nombre:</span> {restaurantName && restaurantName}
+                  </label>
+                  <label>
+                    <span className="dateProfile">Direccion:</span> {restaurantDirection && restaurantDirection}
+                  </label>
+                  <label>
+                    <span className="dateProfile">Celular:</span> {restaurantPhone && restaurantPhone}
+                  </label>
+                </>
+              ) : (
+                <>
+                  <label>
+                    <span className="dateProfile">Nombre:</span> {restaurant && restaurant.name}
+                  </label>
+                  <label>
+                    <span className="dateProfile">Direccion:</span> {restaurant && restaurant.direction}
+                  </label>
+                  <label>
+                    <span className="dateProfile">Celular:</span> {restaurant && restaurant.phone}
+                  </label>
+                </>
+              )
             }
           </div>
           {edit === false && restaurant &&  userKind === "restaurant" && (
@@ -258,10 +245,7 @@ export default function RestaurantForm() {
                       { _id: "Bebidas", foodName: "Bebidas" },
                     ]}
                   />
-                  {foodCategory === "Proteina" && <CreateFood />}
-                  {foodCategory === "Carbohidrato" && <CreateFood />}
-                  {foodCategory === "Vegetales" && <CreateFood />}
-                  {foodCategory === "Bebidas" && <CreateFood />}
+                  {foodCategory && <CreateFood />}
                 </>
               )}
             </div>
