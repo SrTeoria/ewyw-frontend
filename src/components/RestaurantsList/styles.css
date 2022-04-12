@@ -9,17 +9,19 @@
   width: 300px;
 }
 
-.restaurantList {
-  align-items: center;
+.restaurantListComponent {
   background-image: url("./restaurantes1.png");
+  height: 100vh;
+}
+
+.restaurantList{
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  min-height: 100vh
 }
 
 .tittleList {
   color: aliceblue;
   text-align: center;
   width: 100%;
+  padding-top: 2%;
 }

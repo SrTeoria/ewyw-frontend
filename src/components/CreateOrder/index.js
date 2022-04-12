@@ -187,7 +187,7 @@ export default function CreateOrder({ foods }) {
                  <div>Costo total: {totalPrice ? totalPrice : 0}</div>
                 </Col>
                 <Col className='text-start'>
-                  <Button type="submit">Enviar pedido</Button>
+                  <Button type="submit">Confirmar pedido</Button>
                 </Col>
               </Row>
               <p className="tittleProfile"><b>Confirmar pedido</b></p>
