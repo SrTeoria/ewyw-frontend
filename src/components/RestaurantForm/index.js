@@ -37,7 +37,10 @@ export default function RestaurantForm() {
     foodPrice,
     foods,
     restaurant,
-  } = useSelector(({ restaurantReducer, foodReducer }) => ({
+    restaurantName,
+    restaurantDirection,
+    restaurantPhone
+  } = useSelector(({ restaurantReducer, foodReducer, signUpReducer }) => ({
 
     foodName: restaurantReducer.foodName,
     foodLabel: restaurantReducer.foodLabel,
@@ -45,7 +48,12 @@ export default function RestaurantForm() {
     foodPrice: restaurantReducer.foodPrice,
     foods: foodReducer.foods,
     restaurant: restaurantReducer.restaurant,
+    restaurantName: signUpReducer.name,
+    restaurantDirection: signUpReducer.direction,
+    restaurantPhone: signUpReducer.phone
   }));
+
+  console.log(restaurant)
 
   const [edit, setEdit] = useState(false)
   const [createFood, setCreateFood] = useState(false)
@@ -136,6 +144,32 @@ export default function RestaurantForm() {
                   Celular
                 </FormInputs>
               </>
+            ) :
+            // (
+            //   <>
+            //     <label>
+            //       <span className="dateProfile">Nombre:</span> {restaurant && restaurant.name}
+            //     </label>
+            //     <label>
+            //       <span className="dateProfile">Direccion:</span> {restaurant && restaurant.direction}
+            //     </label>
+            //     <label>
+            //       <span className="dateProfile">Celular:</span> {restaurant && restaurant.phone}
+            //     </label>
+            //   </>
+            // )
+            restaurant === null ? (
+              <>
+                <label>
+                  <span className="dateProfile">Nombre:</span> {restaurantName && restaurantName}
+                </label>
+                <label>
+                  <span className="dateProfile">Direccion:</span> {restaurantDirection && restaurantDirection}
+                </label>
+                <label>
+                  <span className="dateProfile">Celular:</span> {restaurantPhone && restaurantPhone}
+                </label>
+              </>
             ) : (
               <>
                 <label>
@@ -145,10 +179,11 @@ export default function RestaurantForm() {
                   <span className="dateProfile">Direccion:</span> {restaurant && restaurant.direction}
                 </label>
                 <label>
-                  <span className="dateProfile">Telefono:</span> {restaurant && restaurant.phone}
+                  <span className="dateProfile">Celular:</span> {restaurant && restaurant.phone}
                 </label>
               </>
-            )}
+            )
+            }
           </div>
           {edit === false && restaurant &&  userKind === "restaurant" && (
             <>
