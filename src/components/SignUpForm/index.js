@@ -11,6 +11,8 @@ import './styles.css'
 
 export default function SignUpForm(){
 
+  const dispatch = useDispatch()
+
   const history = useHistory()
 
   const {
@@ -68,7 +70,6 @@ export default function SignUpForm(){
       }
     }
 
-    const dispatch = useDispatch()
   return(
     <div className='backgroundImage'>
       <form className='signup' onSubmit={handleSubmit}>

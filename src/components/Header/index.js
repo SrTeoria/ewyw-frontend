@@ -72,7 +72,7 @@ function Header() {
             <img className="logo" src={logo} alt="logoEwyw" />
           </div>
           <div className="positionButtons">
-            <a className="headerButtons" href="/landingpage">
+            <a className="headerButtons" href="/">
               Inicio
             </a>
             {!token && (

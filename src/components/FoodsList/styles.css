@@ -16,6 +16,12 @@
   flex-wrap: wrap;
   justify-content: center;
   min-height: 100vh;
+  align-content: flex-start;
+}
+
+.foodList-list {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .tittleList {

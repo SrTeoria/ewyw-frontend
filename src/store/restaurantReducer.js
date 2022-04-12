@@ -41,7 +41,7 @@ export function getRestaurant() {
       ) {
         localStorage.removeItem("token");
         alert("Su sesión expiró, ingrese nuevamente.")
-        history.push("/landingpage")
+        history.push("/")
       }
     } finally {
       dispatch({ type: RESTAURANTS_FINISHED })
@@ -73,7 +73,7 @@ export function getRestaurantPublic(restaurantId) {
       ) {
         localStorage.removeItem("token")
         alert("Su sesión expiró, ingrese nuevamente.")
-        history.push("/landingpage")
+        history.push("/")
       }
     } finally {
       dispatch({ type: RESTAURANTS_FINISHED })

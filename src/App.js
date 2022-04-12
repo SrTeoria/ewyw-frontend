@@ -7,6 +7,7 @@ import RestaurantProfile from "./pages/RestaurantProfile"
 import { LandingPage } from "./pages/LandingPage"
 import ListaRestaurantes from "./pages/ListaRestaurantes"
 import ListaComidas from "./pages/ListaComidas"
+import EditFoods from "./pages/EditFoods"
 
 function PrivateRoute({ children, ...rest }) {
   const token = localStorage.getItem("token")
@@ -44,6 +45,9 @@ function App() {
         </PrivateRoute>
         <PrivateRoute exact path="/foodslist/:restaurantId">
           <ListaComidas/>
+        </PrivateRoute>
+        <PrivateRoute exact path="/foodsedit/:_id">
+          <EditFoods />
         </PrivateRoute>
       </Switch>
     </Router>
