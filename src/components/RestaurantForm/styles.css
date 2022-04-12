@@ -8,6 +8,11 @@
   margin: 5% 40%;
   width: 355px;
   height: 100%;
+  align-items: center;
+}
+
+.buttonRestaurantProfile{
+  width: 50%;
 }
 
 @media only screen and (max-width: 675px) {
